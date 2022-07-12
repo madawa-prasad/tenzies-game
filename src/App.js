@@ -67,6 +67,9 @@ function App() {
           Roll until all dice are the same. Click each die to freeze it at its
           current value between rolls.
         </p>
+        <span className="useless">
+          Useless span. Added for resolving a doubt
+        </span>
         <div className="dice">
           {dice.map((die, index) => (
             <Die
