@@ -27,8 +27,18 @@ function App() {
 
   const [dice, setDice] = useState(allNewDice());
 
+  //Change unhold dice on rolling
   const rollDice = () => {
-    setDice(allNewDice());
+    setDice((oldDice) =>
+      oldDice.map((die) => {
+        return die.isHeld
+          ? die
+          : {
+              value: Math.ceil(Math.random() * 6),
+              isHeld: false,
+            };
+      })
+    );
   };
 
   return (
