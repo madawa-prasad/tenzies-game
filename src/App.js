@@ -78,5 +78,5 @@ function App() {
     </main>
   );
 }
-
+//Useless comment, added to test a doubt.
 export default App;
