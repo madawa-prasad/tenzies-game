@@ -8,9 +8,21 @@ function App() {
   const allNewDice = () => {
     const newDice = [];
     for (let i = 0; i < 10; i++) {
-      newDice.push({ value: Math.ceil(Math.random() * 6), isHeld: false });
+      newDice.push({
+        value: Math.ceil(Math.random() * 6),
+        isHeld: false,
+      });
     }
     return newDice;
+  };
+
+  //Changing isHeld property
+  const holdDice = (i) => {
+    setDice((oldDice) =>
+      oldDice.map((die, index) => {
+        return index === i ? { ...die, isHeld: !die.isHeld } : die;
+      })
+    );
   };
 
   const [dice, setDice] = useState(allNewDice());
@@ -19,13 +31,17 @@ function App() {
     setDice(allNewDice());
   };
 
-  console.log(dice);
   return (
     <main>
       <div className="App">
         <div className="dice">
           {dice.map((die, index) => (
-            <Die key={index} value={die.value} />
+            <Die
+              key={index}
+              value={die.value}
+              isHeld={die.isHeld}
+              holdDice={() => holdDice(index)}
+            />
           ))}
         </div>
         <button className="roll-btn" onClick={rollDice}>
