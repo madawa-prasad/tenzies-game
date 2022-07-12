@@ -22,6 +22,16 @@ main {
   justify-content: center;
 }
 
+.title {
+  font-size: 36px;
+}
+
+.description {
+  text-align: center;
+  font-size: 20px;
+  padding: 0px 40px;
+}
+
 .dice {
   padding: 50px;
   display: grid;
