@@ -52,6 +52,12 @@ function App() {
     );
   };
 
+  //New Game function
+  const newGame = () => {
+    setTenzies(false);
+    setDice(allNewDice());
+  };
+
   return (
     <main>
       {tenzies && <Confetti />}
@@ -71,9 +77,15 @@ function App() {
             />
           ))}
         </div>
-        <button className="roll-btn" onClick={rollDice}>
-          {tenzies ? 'New Game' : 'Roll'}
-        </button>
+        {tenzies ? (
+          <button className="roll-btn" onClick={newGame}>
+            Reset Game
+          </button>
+        ) : (
+          <button className="roll-btn" onClick={rollDice}>
+            Roll
+          </button>
+        )}
       </div>
     </main>
   );
