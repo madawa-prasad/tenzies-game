@@ -8,12 +8,16 @@ function App() {
   const allNewDice = () => {
     const newDice = [];
     for (let i = 0; i < 10; i++) {
-      newDice.push(Math.ceil(Math.random() * 6));
+      newDice.push({ value: Math.ceil(Math.random() * 6), isHeld: false });
     }
     return newDice;
   };
 
   const [dice, setDice] = useState(allNewDice());
+
+  const rollDice = () => {
+    setDice(allNewDice());
+  };
 
   console.log(dice);
   return (
@@ -21,9 +25,12 @@ function App() {
       <div className="App">
         <div className="dice">
           {dice.map((die, index) => (
-            <Die key={index} value={die} />
+            <Die key={index} value={die.value} />
           ))}
         </div>
+        <button className="roll-btn" onClick={rollDice}>
+          Roll
+        </button>
       </div>
     </main>
   );
